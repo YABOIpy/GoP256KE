@@ -1,4 +1,4 @@
-# Go25519
+# GoP256
 Implementation of the P-256 curve for key exchange in Go
 
 
