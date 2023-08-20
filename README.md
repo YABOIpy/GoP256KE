@@ -31,7 +31,10 @@ func (g *Generator) GeneratePrimes(limit int) {
 ![image](https://github.com/YABOIpy/-GoP256/assets/110062350/5f1edbba-7cf0-4afa-9434-f8cb27a73dee)
 
 
+# Understanding The KeyExchange 
 ```go
+// Gop256KE uses the p256 EC("elliptic Curve") for the Key Exchange aslo known as ECDH("Elliptic Curve Diffie Hellman") 
+
 // P256 returns a Curve which implements NIST P-256 (FIPS 186-3, section D.2.3),
 // also known as secp256r1 or prime256v1. The CurveParams.Name of this Curve is
 // "P-256".
@@ -62,17 +65,23 @@ Curve.Params().Gy
 
 
 // Calculating the Secrets
-	// Taking the EC & The PublicKeys X and Y
+	// Taking the EC(p256 Curve) & The PublicKeys X and Y and Returning The Shared X Secret of the keys
 	func CalculateSecret(curve elliptic.Curve, privateKey *big.Int, pkX, pkY *big.Int) *big.Int {
 		sharedX, _ := curve.ScalarMult(pkX, pkY, privateKey.Bytes())
 		sharedX.Mod(sharedX, curve.Params().P)
 		return sharedX
 	}
-	sharedSecret1 := CalculateSecret(Curve, BobPrivateKey, AlicePublicKeyX, alicePublicKeyY)
-	sharedSecret2 := CalculateSecret(Curve, AlicePrivateKey, BobPublicKeyX, bobPublicKeyY)
+	// pkX is Alice's PublicKeyX and PkY is the PublicKeyY
+	// we Do the same for the other Secret but switching the Keys around and using Bobs Private Key
+	sharedSecret1 := CalculateSecret(Curve, AlicePrivateKey, BobPublicKeyX, bobPublicKeyY)
+	sharedSecret2 := CalculateSecret(Curve, BobPrivateKey, AlicePublicKeyX, alicePublicKeyY)
+	// and there you have it Key Exchange done fast and efficiently
 
 ```
+# BenchMarks
+```md
 
+```
 
 https://www.youtube.com/watch?v=NF1pwjL9-DE
 https://en.wikipedia.org/wiki/Prime_number
