@@ -2,7 +2,7 @@
 Implementation of the Ed25519 Public-Key Cryptography Algorithm in Go
 
 
-
+https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 ```go
 func (g *Generator) GeneratePrimes(limit int) {
 	if limit <= 3 {
@@ -30,4 +30,4 @@ func (g *Generator) GeneratePrimes(limit int) {
 
 1. https://en.wikipedia.org/wiki/Prime_number
 2. https://en.wikipedia.org/wiki/Curve25519
-3. https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+
