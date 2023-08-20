@@ -2,36 +2,10 @@
 Implementation of the P-256 curve for key exchange in Go
 
 
-https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
-```go
-func (g *Generator) GeneratePrimes(limit int) {
-	if limit <= 3 {
-		return
-	}
-	c := make([]bool, limit)
-	
-	for i := 1; i < int(1+(1.0*float64(limit-1)/2.0)); i++ {
-		if !c[i] {
-			p := 2*i + 1
-			for j := p * p; j < limit; j += 2 * p {
-				c[(j-1)/2] = true
-			}
-		}
-	}
-	//adding them to the list
-	g.primes = append(g.primes, 2)
-	for i := 1; i < limit/2; i++ {
-		if !c[i] {
-			g.primes = append(g.primes, 2*i+1)
-		}
-	}
-}
-```
-
 ![image](https://github.com/YABOIpy/-GoP256/assets/110062350/5f1edbba-7cf0-4afa-9434-f8cb27a73dee)
 
 
-# Understanding The KeyExchange 
+# Understanding The Public Key Exchange 
 ```go
 // Gop256KE uses the p256 EC("elliptic Curve") for the Key Exchange aslo known as ECDH("Elliptic Curve Diffie Hellman") 
 
@@ -73,18 +47,31 @@ Curve.Params().Gy
 	}
 	// pkX is Alice's PublicKeyX and PkY is the PublicKeyY
 	// we Do the same for the other Secret but switching the Keys around and using Bobs Private Key
-	sharedSecret1 := CalculateSecret(Curve, AlicePrivateKey, BobPublicKeyX, bobPublicKeyY)
-	sharedSecret2 := CalculateSecret(Curve, BobPrivateKey, AlicePublicKeyX, alicePublicKeyY)
+	// These are the Shared Secrets between Alice And Bob
+	Secret1 := CalculateSecret(Curve, AlicePrivateKey, BobPublicKeyX, bobPublicKeyY)
+	Secret2 := CalculateSecret(Curve, BobPrivateKey, AlicePublicKeyX, alicePublicKeyY)
 	// and there you have it Key Exchange done fast and efficiently
 
 ```
+
 # BenchMarks
 ```md
 
 ```
+# Visual Example
+![image](https://github.com/YABOIpy/GoP256KE/assets/110062350/319fcaba-1349-4b3b-9af5-647b72aec0f1)
+
+# How its used over https
+![image](https://github.com/YABOIpy/GoP256KE/assets/110062350/bc0ad27e-d558-4fdb-8cd3-b58ca47b8fdc)
+
+
+
 
 https://www.youtube.com/watch?v=NF1pwjL9-DE
+
 https://en.wikipedia.org/wiki/Prime_number
+
 https://en.wikipedia.org/wiki/Elliptic-curve_cryptography
+
 https://en.wikipedia.org/wiki/Curve25519
 
