@@ -57,6 +57,52 @@ Curve.Params().Gy
 # BenchMarks
 ```md
 
+> 1000 iterations done within 167
+Benchmark finished in 166.5962ms
+Benchmark finished in 166.93ms
+Benchmark finished in 164.0544ms
+Benchmark finished in 164.7368ms
+Benchmark finished in 164.5691ms
+Benchmark finished in 164.8557ms
+Benchmark finished in 165.3431ms
+Benchmark finished in 155.8193ms
+Benchmark finished in 158.9972ms
+Benchmark finished in 165.3473ms
+Benchmark finished in 164.9142ms
+Benchmark finished in 163.3916ms
+Benchmark finished in 166.0719ms
+AVG: 163.9079ms
+
+```go
+func main() {
+	s := time.Now()
+	
+	for i := 0; i < 1000; i++ {
+		Curve := CreateP256Curve()
+		AlicePrivateKey, err := CreatePrivateKey(Curve)
+		if err != nil {
+			log.Println("Failed To Create Alice's private key:", err)
+			return
+		}
+
+		BobPrivateKey, err := CreatePrivateKey(Curve)
+		if err != nil {
+			log.Println("Failed To Create Bob's private key:", err)
+			return
+		}
+
+		AlicePublicKeyX, alicePublicKeyY := Curve.ScalarBaseMult(AlicePrivateKey.Bytes())
+		BobPublicKeyX, bobPublicKeyY := Curve.ScalarBaseMult(BobPrivateKey.Bytes())
+		Secret1 := CalculateSecret(Curve, AlicePrivateKey, BobPublicKeyX, bobPublicKeyY)
+		Secret2 := CalculateSecret(Curve, BobPrivateKey, AlicePublicKeyX, alicePublicKeyY)
+		if Secret1.Cmp(Secret2) != 0 {
+			log.Println("Shared secrets do not match!")
+		}
+	}
+	fmt.Printf("1000 runs in %s\n", time.Since(s))
+}
+
+
 ```
 # Visual Example
 ![image](https://github.com/YABOIpy/GoP256KE/assets/110062350/319fcaba-1349-4b3b-9af5-647b72aec0f1)
