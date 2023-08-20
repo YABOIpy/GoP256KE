@@ -22,7 +22,7 @@ Curve.Params().Gy
 
 // Generating the Keys
 	// Private Keys
-	// Taking the Curve parameter N and Generating a PseudoRandom Key That is used as a Private Key 
+	// Taking the Curve parameter N and Generating a 256-Bit PseudoRandom Key That is used as a Private Key 
 	func CreatePrivateKey(curve elliptic.Curve) (*big.Int, error) {
 		key, err := rand.Int(rand.Reader, curve.Params().N)
 		if err != nil {
@@ -47,7 +47,7 @@ Curve.Params().Gy
 	}
 	// pkX is Alice's PublicKeyX and PkY is the PublicKeyY
 	// we Do the same for the other Secret but switching the Keys around and using Bobs Private Key
-	// These are the Shared Secrets between Alice And Bob
+	// These are the 256-Bit Shared Secrets between Alice And Bob
 	Secret1 := CalculateSecret(Curve, AlicePrivateKey, BobPublicKeyX, bobPublicKeyY)
 	Secret2 := CalculateSecret(Curve, BobPrivateKey, AlicePublicKeyX, alicePublicKeyY)
 	// and there you have it Key Exchange done fast and efficiently
