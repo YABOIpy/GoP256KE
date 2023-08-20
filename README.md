@@ -27,7 +27,13 @@ func (g *Generator) GeneratePrimes(limit int) {
 }
 ```
 
+```go
+// P256 returns a Curve which implements NIST P-256 (FIPS 186-3, section D.2.3),
+// also known as secp256r1 or prime256v1. The CurveParams.Name of this Curve is
+// "P-256".
 
-1. https://en.wikipedia.org/wiki/Prime_number
-2. https://en.wikipedia.org/wiki/Curve25519
+
+https://www.youtube.com/watch?v=NF1pwjL9-DE
+https://en.wikipedia.org/wiki/Prime_number
+https://en.wikipedia.org/wiki/Curve25519
 
