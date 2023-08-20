@@ -1,5 +1,5 @@
 # Go25519
-Implementation of the Ed25519 Public-Key Cryptography Algorithm in Go
+Implementation of the P-256 curve for key exchange in Go
 
 
 https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
@@ -26,6 +26,9 @@ func (g *Generator) GeneratePrimes(limit int) {
 	}
 }
 ```
+
+![image](https://github.com/YABOIpy/-GoP256/assets/110062350/5f1edbba-7cf0-4afa-9434-f8cb27a73dee)
+
 
 ```go
 // P256 returns a Curve which implements NIST P-256 (FIPS 186-3, section D.2.3),
