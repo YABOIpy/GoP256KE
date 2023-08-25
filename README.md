@@ -110,8 +110,10 @@ func main() {
 # How its used over https
 ![image](https://github.com/YABOIpy/GoP256KE/assets/110062350/bc0ad27e-d558-4fdb-8cd3-b58ca47b8fdc)
 
-
-
+# Other Uses of the Curve
+![image](https://github.com/YABOIpy/GoP256KE/assets/110062350/f3c95a7d-dd78-4bd4-a72c-0588ad27db9c)
+https://www.cem.me/20170410-ecc-1.html
+_______
 
 https://www.youtube.com/watch?v=NF1pwjL9-DE
 
