@@ -107,8 +107,6 @@ func main() {
 # Visual Example
 ![image](https://github.com/YABOIpy/GoP256KE/assets/110062350/319fcaba-1349-4b3b-9af5-647b72aec0f1)
 
-![image](https://github.com/YABOIpy/GoP256KE/assets/110062350/36c09ed7-cb2e-4361-bee5-1e7a75e59efd)
-
 # How its used over https
 ![image](https://github.com/YABOIpy/GoP256KE/assets/110062350/bc0ad27e-d558-4fdb-8cd3-b58ca47b8fdc)
 
