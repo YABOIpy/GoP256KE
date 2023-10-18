@@ -57,22 +57,7 @@ Curve.Params().Gy
 # BenchMarks
 ```md
 
-> 1000 iterations done within 167
-Benchmark finished in 166.5962ms
-Benchmark finished in 166.93ms
-Benchmark finished in 164.0544ms
-Benchmark finished in 164.7368ms
-Benchmark finished in 164.5691ms
-Benchmark finished in 164.8557ms
-Benchmark finished in 165.3431ms
-Benchmark finished in 155.8193ms
-Benchmark finished in 158.9972ms
-Benchmark finished in 165.3473ms
-Benchmark finished in 164.9142ms
-Benchmark finished in 163.3916ms
-Benchmark finished in 166.0719ms
-AVG: 163.9079ms
-
+> 1000 iterations done within 167ms
 ```go
 func main() {
 	s := time.Now()
