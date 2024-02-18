@@ -14,7 +14,7 @@ Implementation of the P-256 curve for key exchange in Go
 // "P-256".
 
 Curve := elliptic.P256()
-Curve.Params().N  // returns the starting point of the elliptic curve
+Curve.Params().N  // returns the Base points of the elliptic curve
 Curve.Params().P // returns the Prime Modulus of the elliptic curve
 Curve.Params().Gx 
 Curve.Params().Gy
